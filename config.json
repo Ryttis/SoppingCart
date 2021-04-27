@@ -1,9 +1,9 @@
 {
   "providers": {
-    "rates":"https://api.exchangeratesapi.io/latest",
+    "rates":"https://api.exchangeratesapi.io/latest"
   },
   "file": {
     "name":"input.txt",
-    "class":"App\\ShoppingCart"
+    "class":"App\\Cart\\ShoppingCart"
   }
 }

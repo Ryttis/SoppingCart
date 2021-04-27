@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App;
+namespace App\Currency;
 
-abstract class AbstarctCurrency
+abstract class AbstractCurrency
 {
     public string $name;
     public float $rate;

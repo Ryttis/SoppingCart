@@ -3,7 +3,8 @@
     "description": "simple shoping cart simulation",
     "require": {
         "php": "^7.4.14",
-        "laminas/laminas-config": "^3.5"
+        "laminas/laminas-config": "^3.5",
+        "ext-json": "^7.4"
     },
     "autoload": {
         "psr-4": {

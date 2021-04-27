@@ -22,4 +22,4 @@ $output = new Output(new $className());
 
 
 // generating output into console
-$output->display($config['file']['name']);
+$output->display()->setCart($config['file']['name']);

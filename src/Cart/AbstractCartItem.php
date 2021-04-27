@@ -1,25 +1,23 @@
 <?php
 
 
-namespace App;
+namespace App\Cart;
 
+use App\Currency\CartCurrency;
 
 abstract class AbstractCartItem
 {
-    protected int $id;
+    protected string $id;
     protected string $name;
     protected int $quantity;
     protected float $price;
-    protected object $currency;
-    abstract protected function openFile();
-    abstract protected function parseData();
-    abstract protected function retrieveRate();
-    abstract protected function calculateCart();
+    protected CartCurrency $currency;
+
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
@@ -81,17 +79,17 @@ abstract class AbstractCartItem
     }
 
     /**
-     * @return string
+     * @return CartCurrency
      */
-    public function getCurrency(): string
+    public function getCurrency(): CartCurrency
     {
         return $this->currency;
     }
 
     /**
-     * @param  string  $currency
+     * @param  CartCurrency $currency
      */
-    public function setCurrency(string $currency): void
+    public function setCurrency(CartCurrency $currency): void
     {
         $this->currency = $currency;
     }

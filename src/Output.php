@@ -18,8 +18,9 @@ class Output
         $this->formatter = $formatter;
     }
 
-    public function display($fileName)
+    public function display()
     {
-        return $this->formatter->processCart($fileName);
+
+        return $this->formatter;
     }
 }
