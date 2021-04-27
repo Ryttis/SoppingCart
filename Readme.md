@@ -30,10 +30,10 @@ Input data is stored in text file input.txt
 
 SoppingCart class contains following fields:
 
-id   - Unique product identifier
-name - Product name
-quantity = Product quantity
-price - Product price
-currency - Product's price currency as CartCurrency extended from AbstarctCurrency
+ - id   - Unique product identifier
+ - name - Product name
+ - quantity = Product quantity
+ - price - Product price
+ - currency - Product's price currency as CartCurrency extended from AbstarctCurrency
 
 
