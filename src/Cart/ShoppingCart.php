@@ -5,60 +5,71 @@ namespace App\Cart;
 
 use App\Currency\CartCurrency;
 use App\Interfaces\CartInterface;
-use PHPUnit\Exception;
-use function PHPUnit\Framework\throwException;
+
 
 class ShoppingCart extends AbstractCartItem implements CartInterface
 {
     private array $cartTotal = [];
     private CartItem $cartItem;
+    public float $grandTotal = 0;
 
-    protected function loadItems($fileName)
+    /**
+     * @param $fileName
+     */
+    protected function loadItems($fileName): void
     {
         try {
             $file = fopen($fileName, "r");
 
-            while(! feof($file)) {
+            while (!feof($file)) {
                 $fLine = fgets($file);
-                $line = explode(',', str_replace(';',',', $fLine));
+                $line = explode(',', str_replace(';', ',', $fLine));
                 $this->cartItem = new CartItem(
-                    $line[0], $line[1], $line[2], gettype($line[3] == 'float') ? $line[3] : 0.00 ,
-                    new CartCurrency($line[4]));
-               array_push($this->cartTotal, $this->cartItem);
+                    $line[0], $line[1], $line[2], floatval($line[3]),
+                    new CartCurrency($line[4])
+                );
+                array_push($this->cartTotal, $this->cartItem);
             }
 
             fclose($file);
 
         } catch (\Exception $ex) {
 
-          echo 'Viskas blogai: ' . $ex->getMessage();
+            echo 'Viskas blogai, neradome filo: '.$ex->getMessage();
         }
     }
 
-    protected function calculateCart(): void
-    {
-//      retrieveRate
-//     calculate cart
-    }
-
-    public function setCart($fileName)
+    /**
+     * @param  string  $fileName
+     */
+    public function setCart($fileName): void
     {
         $this->loadItems($fileName);
-        var_dump($this->cartTotal);
     }
 
-    public function processCart()
+    /**
+     *
+     */
+    public function checkOutCart()
     {
-
-        echo $this->transData;
-//        foreach ($transactionData as $data) {
-//            $this->cartTotal->$this->calculateCart();
-//
-//        }
-//        print("\n Cart Total");
-//        echo $this->cartTotal."EUR";
+        foreach ($this->cartTotal as $item) {
+            $this->calculateCart($item);
+        }
+        print("\n Grand Total: ");
+        echo $this->grandTotal." EUR";
     }
 
+    /**
+     *
+     */
+    protected function calculateCart($item): void
+    {
+        $this->grandTotal = $item->price * $item->currency->rate * $item->quantity + $this->grandTotal;
+    }
+
+    /**
+     *
+     */
     public function getCartItems()
     {
         // TODO: Implement getCartItems() method.

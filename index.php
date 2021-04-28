@@ -23,3 +23,4 @@ $output = new Output(new $className());
 
 // generating output into console
 $output->display()->setCart($config['file']['name']);
+$output->display()->checkOutCart();

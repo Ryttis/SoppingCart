@@ -6,7 +6,7 @@ namespace App\Interfaces;
 
 interface CartInterface
 {
-    public function processCart();
+    public function checkOutCart();
 
     public function getCartItems();
 
