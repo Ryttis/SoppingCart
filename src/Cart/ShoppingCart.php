@@ -14,9 +14,9 @@ class ShoppingCart extends AbstractCartItem implements CartInterface
     public float $grandTotal = 0;
 
     /**
-     * @param $fileName
+     * @param string $fileName
      */
-    protected function loadItems($fileName): void
+    protected function loadItems(string $fileName): void
     {
         try {
             $file = fopen($fileName, "r");

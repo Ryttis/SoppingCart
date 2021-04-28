@@ -7,7 +7,7 @@ use App\Currency\CartCurrency;
 
 abstract class AbstractCartItem
 {
-    protected string $id;
+    protected string $code;
     protected string $name;
     protected int $quantity;
     protected float $price;
@@ -17,17 +17,17 @@ abstract class AbstractCartItem
     /**
      * @return string
      */
-    public function getId(): string
+    public function getCode(): string
     {
-        return $this->id;
+        return $this->code;
     }
 
     /**
-     * @param  int  $id
+     * @param  string  $code
      */
-    public function setId(int $id): void
+    public function setCode(string $code): void
     {
-        $this->id = $id;
+        $this->code = $code;
     }
 
     /**

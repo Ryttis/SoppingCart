@@ -24,7 +24,7 @@
 - The shopping cart's default currency is `EUR` 
 - Exchange rates for currencies: `EUR:USD` - `1:1.14`, `EUR:GBP` - `1:0.88`
 
-are implemented on abstarct level
+are implemented with more currencies
 
 Input data is stored in text file input.txt
 
@@ -35,5 +35,7 @@ SoppingCart class contains following fields:
  - quantity = Product quantity
  - price - Product price
  - currency - Product's price currency as CartCurrency extended from AbstarctCurrency
+
+php index.php will produce Grand Total in EUR
 
 
