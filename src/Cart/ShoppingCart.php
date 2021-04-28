@@ -14,7 +14,7 @@ class ShoppingCart extends AbstractCartItem implements CartInterface
     public float $grandTotal = 0;
 
     /**
-     * @param string $fileName
+     * @param  string  $fileName
      */
     protected function loadItems(string $fileName): void
     {
@@ -40,6 +40,7 @@ class ShoppingCart extends AbstractCartItem implements CartInterface
     }
 
     /**
+     * Loads cart items
      * @param  string  $fileName
      */
     public function setCart($fileName): void
@@ -48,7 +49,7 @@ class ShoppingCart extends AbstractCartItem implements CartInterface
     }
 
     /**
-     *
+     *  calculates cart Checkout Amount
      */
     public function checkOutCart()
     {
@@ -60,18 +61,20 @@ class ShoppingCart extends AbstractCartItem implements CartInterface
     }
 
     /**
-     *
+     *  if quantity is greater than 0 increases cart Checkout Amount by particular item sum
      */
     protected function calculateCart($item): void
     {
-        $this->grandTotal = $item->price * $item->currency->rate * $item->quantity + $this->grandTotal;
+        if ($item->quantity > 0) {
+            $this->grandTotal = $item->price * $item->currency->rate * $item->quantity + $this->grandTotal;
+        }
     }
 
     /**
-     *
+     * @return ShoppingCart
      */
-    public function getCartItems()
+    public function getCartItems() : ShoppingCart
     {
-        // TODO: Implement getCartItems() method.
+       return $this;
     }
 }
