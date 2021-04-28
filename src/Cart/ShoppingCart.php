@@ -10,7 +10,7 @@ use function PHPUnit\Framework\throwException;
 
 class ShoppingCart extends AbstractCartItem implements CartInterface
 {
-    private array $cartTotal =[];
+    private array $cartTotal = [];
     private CartItem $cartItem;
 
     protected function loadItems($fileName)
@@ -22,28 +22,17 @@ class ShoppingCart extends AbstractCartItem implements CartInterface
                 $fLine = fgets($file);
                 $line = explode(',', str_replace(';',',', $fLine));
                 $this->cartItem = new CartItem(
-                    $line[0], $line[1], $line[2], $line[3],
-                    new CartCurrency($line[4] ?? '', 0.00));
+                    $line[0], $line[1], $line[2], gettype($line[3] == 'float') ? $line[3] : 0.00 ,
+                    new CartCurrency($line[4]));
                array_push($this->cartTotal, $this->cartItem);
             }
-            var_dump($this->cartTotal);
-            exit;
+
             fclose($file);
 
         } catch (\Exception $ex) {
 
           echo 'Viskas blogai: ' . $ex->getMessage();
         }
-    }
-
-    protected function parseData(): void
-    {
-       //
-    }
-
-    protected function retrieveRate()
-    {
-//        return current rate;
     }
 
     protected function calculateCart(): void

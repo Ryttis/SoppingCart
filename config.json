@@ -1,6 +1,7 @@
 {
   "providers": {
-    "rates":"https://api.exchangeratesapi.io/latest"
+    "rates":"https://v6.exchangerate-api.com/v6/f0faba2385f0e432d4745dff/latest/EUR",
+    "apikey": "f0faba2385f0e432d4745dff"
   },
   "file": {
     "name":"input.txt",

@@ -8,7 +8,7 @@ use App\Currency\CartCurrency;
 
 class CartItem extends AbstractCartItem
 {
-    public function __construct(string $id , string $name,int $quantity , $price ,CartCurrency $currency)
+    public function __construct(string $id , string $name, int $quantity , $price ,CartCurrency $currency)
     {
         $this->id = $id;
         $this->name = $name;
